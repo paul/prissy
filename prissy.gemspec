@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "prissy"
   gem.require_paths = ["lib"]
   gem.version       = Prissy::VERSION
+
+  gem.add_development_dependency "rspec", "~> 2.11"
 end
