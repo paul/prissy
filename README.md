@@ -1,6 +1,6 @@
 # Prissy
 
-TODO: Write a gem description
+Pretty prints JSON output with even more prettiness, and focus on readability. Also understands things like terminal width, colors, and HTML.
 
 ## Installation
 
@@ -18,7 +18,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### From the command line
+
+```
+$ curl -H "Accept: application/json" https://api.github.com/users/paul | prissy
+{
+  "type":         "User",
+  "avatar_url":
+    "https://secure.gravatar.com/avatar/d587890d0fcf8f45724baa8b1bfe1bf4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+  "bio":          "",
+  "blog":         "blog.theamazingrando.com",
+  "company":      "GitHub",
+  "created_at":   "2008-02-11T18:44:09Z",
+  "email":        "psadauskas@gmail.com",
+  "followers":    35,
+  "following":    1,
+  "gravatar_id":  "d587890d0fcf8f45724baa8b1bfe1bf4",
+  "hireable":     false,
+  "html_url":     "https://github.com/paul",
+  "id":           184,
+  "location":     "Boulder, CO",
+  "login":        "paul",
+  "name":         "Paul Sadauskas",
+  "public_gists": 322,
+  "public_repos": 82,
+  "url":          "https://api.github.com/users/paul"
+}
+```
+
+### In Ruby
+
+```ruby
+# The easy way
+Prissy(json_or_hash)
+
+# With options
+Prissy.new(output: :html_inline_style).prissy(json_or_hash)
+```
 
 ## Contributing
 
