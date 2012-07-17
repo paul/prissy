@@ -1,0 +1,13 @@
+
+{
+  "inline_array":     ["one", "two", "three"],
+  "array": [ "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve" ],
+  "string": "a text string",
+  "number": 42.0,
+  "true": true,
+  "false": false,
+  "null": null,
+  "inline_object": {"foo": "bar"},
+  "object": {"foo": "bar", "baz": "bax", "more": [1,2,3]}
+}
+

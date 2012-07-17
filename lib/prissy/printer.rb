@@ -16,7 +16,7 @@ class Prissy
 
     protected
 
-    def print_object(object)
+    def print_object(object, starting_column = 0)
       if object.empty?
 	print_literal '{}'
       elsif object.size == 1
@@ -45,16 +45,17 @@ class Prissy
     def print_pair(key, value, max_key_width = 0)
       print_key(key)
       print_separator
-      @txt << " " * (max_key_width - key.length) if max_key_width > 0
-      print_value(value)
+      spacing = max_key_width > 0 ? (max_key_width - key.length) : 0
+      @txt << " " * spacing
+      print_value(value, @indent * 2 + key.length + 4 + spacing )
     end
 
-    def print_array(array)
+    def print_array(array, starting_column = 0)
       # Length of all values, plus quotes, commas, spaces and brackets
       array_length = calculate_array_length(array)
 
       if !array.any?{|el| el.is_a?(Hash) || el.is_a?(Array)} &&
-	(@indent * 2 + array_length < options[:max_width])
+	(starting_column + array_length < options[:max_width])
 
 	print_literal '['
 	array.each do |el|
@@ -83,12 +84,12 @@ class Prissy
       @txt << %{"#{key.to_s}"}
     end
 
-    def print_value(value)
+    def print_value(value, starting_column = 0)
       case value
-      when Array      then print_array(value)
-      when Hash       then print_object(value)
+      when Array      then print_array(value, starting_column)
+      when Hash       then print_object(value, starting_column)
       when Numeric    then print_number(value)
-      when String     then print_string(value)
+      when String     then print_string(value, starting_column)
       when TrueClass  then print_true
       when FalseClass then print_false
       when NilClass   then print_null
@@ -96,7 +97,7 @@ class Prissy
     end
 
     # Make all these explicit, so its easier to override them in subclasses
-    def print_string(string)
+    def print_string(string, starting_column = 0)
       @txt << %{"#{string}"}
     end
 

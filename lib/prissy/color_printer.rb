@@ -4,7 +4,7 @@ class Prissy
   class ColorPrinter < Printer
     include Term::ANSIColor
 
-    def print_string(string)
+    def print_string(string, starting_column)
       super blue{string}
     end
 
