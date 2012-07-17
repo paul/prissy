@@ -4,9 +4,9 @@ require File.expand_path('../lib/prissy/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Paul Sadauskas"]
   gem.email         = ["psadauskas@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Even prettier JSON console output}
+  gem.summary       = %q{Nicely format JSON}
+  gem.homepage      = "https://github.com/paul/prissy"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
