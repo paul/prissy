@@ -2,6 +2,17 @@
 
 Pretty prints JSON output with even more prettiness, and focus on readability. Also understands things like terminal width, colors, and HTML.
 
+## Why another one?
+
+There's plenty of JSON formatters out there, in tons of languages. While none of them are perfect, this one is special because:
+
+ * Left-align key names. Column-align the values.
+ * When nested objects or arrays are short and simple, keep them in the same line as the key. If they're longer, or contain further nestings, then make them multiline.
+ * Terminal width aware, so that things don't wrap if we can help it.
+ * Colorized terminal output optional.
+ * TODO: (colored) HTML output, so we don't have to roundtrip through yet another syntax library.
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -21,6 +32,36 @@ Or install it yourself as:
 ### From the command line
 
 ```
+$ cat example_input.json | prissy
+{
+  "array":         [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve"
+  ],
+  "false":         false,
+  "inline_array":  ["one", "two", "three"],
+  "inline_object": {"foo": "bar"},
+  "null":          null,
+  "number":        42.0,
+  "object":        {
+    "baz":  "bax",
+    "foo":  "bar",
+    "more": [1, 2, 3]
+  },
+  "string":        "a text string",
+  "true":          true
+}
+
 $ curl -H "Accept: application/json" https://api.github.com/users/paul | prissy
 {
   "type":         "User",
