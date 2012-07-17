@@ -53,8 +53,12 @@ $ curl -H "Accept: application/json" https://api.github.com/users/paul | prissy
 Prissy(json_or_hash)
 
 # With options
-Prissy.new(output: :html_inline_style).prissy(json_or_hash)
+Prissy.new(width: 120, color: false).prissy(json_or_hash)
 ```
+
+## Output:
+
+![prissy output](https://github-images.s3.amazonaws.com/skitch/2._psadauskas%40Pauls-GitHub-MBP__%7E_Code_personal_prissy_%28zsh%29-20120717-163756.png)
 
 ## Contributing
 
