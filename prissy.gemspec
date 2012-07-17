@@ -18,4 +18,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rspec", "~> 2.11"
 
   gem.add_dependency "multi_json", "~> 1.3"
+
+  gem.add_dependency "options",        "~> 2.3.0"
+  gem.add_dependency "term-ansicolor", "~> 1.0.7"
+  gem.add_dependency "ruby-terminfo",  "~> 0.1.1"
 end

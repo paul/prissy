@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'terminfo'
+$:.unshift(File.expand_path("../../lib", __FILE__))
+require 'prissy'
+
+
+json = STDIN.read
+
+width = TermInfo.screen_width
+has_color = TermInfo.default_object.tigetnum("colors")
+
+print Prissy.new(:width => width, :color => has_color).prissy(json)
+

@@ -1,5 +1,6 @@
 require "prissy/version"
 require 'prissy/printer'
+require 'prissy/color_printer'
 
 require 'multi_json'
 
@@ -8,9 +9,7 @@ class Prissy
   attr_reader :options
 
   def initialize(options = {})
-    defaults = {
-      :printer => :plain
-    }
+    defaults = {}
 
     @options = defaults.merge(options)
   end
@@ -18,7 +17,7 @@ class Prissy
   def prissy(json_or_hash)
     hash = (json_or_hash.is_a?(String) ? parse(json_or_hash) : json_or_hash)
 
-    printer = Printer.new
+    p printer
     printer.print(hash)
   end
 
@@ -26,6 +25,20 @@ class Prissy
 
   def parse(json)
     MultiJson.decode(json)
+  end
+
+  def printer
+    @printer ||= begin
+      if $0 =~ /prissy$/
+	if options[:color]
+	  ColorPrinter.new(options)
+	else
+	  Printer.new(options)
+	end
+      else
+	Printer.new(options)
+      end
+		 end
   end
 
 
