@@ -17,7 +17,6 @@ class Prissy
   def prissy(json_or_hash)
     hash = (json_or_hash.is_a?(String) ? parse(json_or_hash) : json_or_hash)
 
-    p printer
     printer.print(hash)
   end
 
