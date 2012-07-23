@@ -81,7 +81,7 @@ class Prissy
     end
 
     def print_key(key)
-      @txt << %{"#{key.to_s}"}
+      @txt << MultiJson.encode(key)
     end
 
     def print_value(value, starting_column = 0)
@@ -98,11 +98,11 @@ class Prissy
 
     # Make all these explicit, so its easier to override them in subclasses
     def print_string(string, starting_column = 0)
-      @txt << %{"#{string}"}
+      @txt << MultiJson.encode(string)
     end
 
     def print_number(number)
-      @txt << number.to_s
+      @txt << MultiJson.encode(number)
     end
 
     def print_true
